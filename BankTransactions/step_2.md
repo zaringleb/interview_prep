@@ -1,7 +1,11 @@
-Add a metric over your transaction log. Do not change Level-1 behavior.
+## Step 2
 
-top_k_by_outgoing(self, start_ts: int, end_ts: int, k: int) -> list[str]
-Consider only "transfer" records sent by each account with start_ts ≤ timestamp ≤ end_ts.
-For each account, sum outgoing amounts in that range.
+Add a metric over your transaction log.
+
+```python
+top_k_by_outgoing(self, k: int) -> list[str]
+```
+Consider all "transfer" records sent by each account.
+For each account, sum all outgoing amounts.
 Return up to k account IDs sorted by descending total; break ties by lexicographic account_id ascending.
-Return an empty list if no account sent money in range.
+Return an empty list if no account has sent any money.

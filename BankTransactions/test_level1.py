@@ -15,23 +15,23 @@ def test_get_balance_unknown_and_known():
 def test_deposit_success_and_failures():
     b = Bank()
     b.create_account("A", 0)
-    assert b.deposit("A", 500, 10) == 500
+    assert b.deposit("A", 500) == 500
     # negative / zero amounts invalid
-    assert b.deposit("A", 0, 11) is None
-    assert b.deposit("A", -1, 12) is None
+    assert b.deposit("A", 0) is None
+    assert b.deposit("A", -1) is None
     # unknown account
-    assert b.deposit("Z", 10, 13) is None
+    assert b.deposit("Z", 10) is None
 
 def test_transfer_success_and_errors():
     b = Bank()
     b.create_account("A", 1000)
     b.create_account("B", 10)
     # insufficient funds
-    assert b.transfer("B", "A", 1000, 10) is None
+    assert b.transfer("B", "A", 1000) is None
     # unknown accounts
-    assert b.transfer("C", "A", 1, 11) is None
-    assert b.transfer("A", "C", 1, 12) is None
+    assert b.transfer("C", "A", 1) is None
+    assert b.transfer("A", "C", 1) is None
     # valid transfer returns new balance of sender
-    new_bal = b.transfer("A", "B", 250, 20)
+    new_bal = b.transfer("A", "B", 250)
     assert new_bal == 750
     assert b.get_balance("A") == 750 and b.get_balance("B") == 260
