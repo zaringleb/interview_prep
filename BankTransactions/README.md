@@ -16,7 +16,7 @@ python -m venv .venv && source .venv/bin/activate
 python -m pip install -U pip pytest
 
 # verify the local test framework works
-pytest BankTransactions/test_framework.py -v
+python -m pytest BankTransactions/test_framework.py -v
 ```
 
 ## Workflow
@@ -29,7 +29,7 @@ pytest BankTransactions/test_framework.py -v
 ## Running tests
 
 ```bash
-pytest -q BankTransactions/test_level*.py
+python -m pytest -q BankTransactions/test_level*.py
 ```
 
 ## Files
